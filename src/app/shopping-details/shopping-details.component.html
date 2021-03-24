@@ -1,0 +1,113 @@
+<form [formGroup]="shoppingDetailsForm">
+  <div class="container">
+    <div class="row"><h1>Enter Customer and shopping details</h1></div>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field class="details-full-width">
+          <mat-label>First name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="fName"
+            [errorStateMatcher]="matcher"
+            required
+          />
+          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="details-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="lName"
+            [errorStateMatcher]="matcher"
+            required
+          />
+          <mat-error *ngIf="lName?.errors?.required">
+            Last name is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="city">
+            <mat-option *ngFor="let city of cities" [value]="city.value">
+              {{ city.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <label id="example-radio-group-label">Select Gender</label>
+        <mat-radio-group aria-label="Select Gender">
+          <mat-radio-button value="M">Male</mat-radio-button>
+          <mat-radio-button value="F">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <mat-select formControlName="state">
+            <mat-option *ngFor="let state of state" [value]="state.value">
+              {{ state.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="details-full-width">
+          <mat-label>Pincode</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="pincode"
+            [errorStateMatcher]="matcher"
+            required
+          />
+          <mat-error *ngIf="pincode?.errors?.required">
+            PinCode is required.
+          </mat-error>
+          <mat-error
+            *ngIf="pincode?.errors?.minlength || pincode?.errors?.maxlength"
+          >
+            PinCode must be of minimum 5 digit and maximum 6 digit.
+          </mat-error>
+          <mat-error *ngIf="pincode?.errors?.pattern">
+            Enter only number as a pincode .
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <button
+        type="button"
+        [disabled]="shoppingDetailsForm.invalid"
+        (click)="onSave()"
+        class="btn btn-primary"
+      >
+        Save
+      </button>
+    </div>
+    {{ shoppingDetailsForm.value }}
+  </div>
+</form>
+
+<!--  
+    Please create 6 field , 3 field in each row with 
+    dropdown-state
+    input - pincode
+    input - address
+    radiobutton - gender
+    checkbox: langauage(hindi, english, others)
+    dropdonw :cateogory- (single, married, divorced, widow)
+-->

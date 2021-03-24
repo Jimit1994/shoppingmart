@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row gx-5">
+    <div class="col">
+      <div class="p-3 border bg-light"><app-parent></app-parent></div>
+    </div>
+    <div class="col">
+      <div class="p-3 border bg-light">Custom column padding</div>
+    </div>
+  </div>
+</div>
+
+<h1>Angular Router App</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul>
+    <li>
+      <a routerLink="/parent" routerLinkActive="active">Parent Component</a>
+    </li>
+    <li>
+      <a routerLink="/child" routerLinkActive="active">Child Component</a>
+    </li>
+    <li>
+      <a routerLink="/shoppingDetails" routerLinkActive="active"
+        >Shopping Details Form</a
+      >
+    </li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

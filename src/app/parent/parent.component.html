@@ -1,0 +1,6 @@
+<app-child [childMessage]="message"></app-child>
+<div *ngFor="let student of parentData">
+  <div *ngIf="student.age >= 30">
+    Parent Data : {{ student.name }} ...age is .. {{ student.age }}
+  </div>
+</div>
